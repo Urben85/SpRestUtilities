@@ -65,7 +65,98 @@ myUT.Delete_SpList(list);
 ```
 
 ## Library Utilities
-documentation follows..
+### Get a SpFolder
+```c#
+// With a Library
+SpList lilibrary = myUT.Get_SpList_By_Title("LIBRARYNAME");
+SpFolder folder = myUT.Get_SpFolder_By_Path("FOLDERNAME",library);
+
+// With path only
+SpFolder folder = myUT.Get_SpFolder_By_Path("LIBRARYNAME/FOLDERNAME");
+
+// Get a Subfolder
+SpFolder folder = myUT.Get_SpFolder_By_Path("LIBRARYNAME/FOLDERNAME/SUBFOLDERNAME");
+```
+### Get all SpFolders from SpFolder
+```c#
+// With path and Library
+SpList lilibrary = myUT.Get_SpList_By_Title("LIBRARYNAME");
+SpFolderCollection folderCollection = myUT.Get_SpFolderCollection_By_Path("FOLDERNAME",library);
+
+// With path only
+SpFolderCollection folderCollection = myUT.Get_SpFolderCollection_By_Path("LIBRARYNAME/FOLDERNAME");
+
+
+// Get all Folders in Subfolder
+SpFolderCollection folderCollection = myUT.Get_SpFolderCollection_By_Path("LIBRARYNAME/FOLDERNAME/SUBFOLDERNAME");
+
+// By SpFolder
+SpFolder folder = myUT.Get_SpFolder_By_Path("LIBRARYNAME/FOLDERNAME");
+SpFolderCollection folderCollection = Get_All_SpFolders_From_SpFolder(folder);
+```
+### Create a new SpFolder
+```c#
+// With path and Library
+SpList lilibrary = myUT.Get_SpList_By_Title("LIBRARYNAME");
+SpFolder folder = myUT.Create_SpFolder("FOLDERNAME",library);
+
+// With path only
+SpFolder folder = myUT.Create_SpFolder("LIBRARYNAME/FOLDERNAME");
+
+// Create a Subfolder
+SpFolder subFolder = myUT.Create_SpFolder("LIBRARYNAME/FOLDERNAME/SUBFOLDERNAME"); // Parent Folders must exist!
+```
+### Delete a SpFolder
+```c#
+SpFolder folder = myUT.Get_SpFolder_By_Path("LIBRARYNAME/FOLDERNAME");
+myUT.Delete_SpFolder(folder);
+```
+### Get a SpFile by FileName from SpFolder
+```c#
+SpFolder folder = myUT.Get_SpFolder_By_Path("LIBRARYNAME/FOLDERNAME");
+SpFile file = myUT.Get_SpFile_By_Filename_From_SpFolder("FILENAME.txt",folder);
+```
+### Get all SpFiles by FileName from SpFolder
+```c#
+SpFolder folder = myUT.Get_SpFolder_By_Path("LIBRARYNAME/FOLDERNAME");
+SpFileCollection file = myUT.Get_All_SpFiles_From_SpFolder(folder);
+```
+### Upload a File into a SpFolder
+```c#
+string path = @"C:\yourpath\FILENAME.txt";
+SpFolder folder = myUT.Get_SpFolder_By_Path("LIBRARYNAME/FOLDERNAME");
+
+// Auto overwrite
+SpFile file = myUT.Upload_SpFile_To_SpFolder(path,folder); // if overwrite is undefined it is set to true
+
+// overwrite false
+SpFile file = myUT.Upload_SpFile_To_SpFolder(path,folder,false);
+```
+### Delete SpFile
+```c#
+SpFolder folder = myUT.Get_SpFolder_By_Path("LIBRARYNAME/FOLDERNAME");
+SpFile file = myUT.Get_SpFile_By_Filename_From_SpFolder("FILENAME.txt",folder);
+myUT.Delete_SpFile(file);
+```
+### Move SpFile to another SpFolder
+```c#
+SpFolder sourceFolder = myUT.Get_SpFolder_By_Path("LIBRARYNAME/FOLDERNAME");
+SpFile file = myUT.Get_SpFile_By_Filename_From_SpFolder("FILENAME.txt",sourceFolder);
+SpFolder destFolder = myUT.Get_SpFolder_By_Path("LIBRARYNAME/DESTINATIONFOLDERNAME");
+myUT.Move_SpFile(file,destFolder);
+```
+### Copy SpFile to another SpFolder
+```c#
+SpFolder sourceFolder = myUT.Get_SpFolder_By_Path("LIBRARYNAME/FOLDERNAME");
+SpFile file = myUT.Get_SpFile_By_Filename_From_SpFolder("FILENAME.txt",sourceFolder);
+SpFolder destFolder = myUT.Get_SpFolder_By_Path("LIBRARYNAME/DESTINATIONFOLDERNAME");
+
+// Auto overwrite
+myUT.Copy_SpFile(file,destFolder);
+
+// overwrite false
+myUT.Copy_SpFile(file,destFolder,false);
+```
 
 ## Item Utilities
 ### Get SpItem by ID
@@ -140,7 +231,7 @@ SpList list = myUT.Get_SpList_By_Title("LISTNAME");
 SpItem item = myUT.Get_SpItem_By_ID(yourItemId,list);
 SpFileCollection attachments = myUT.Get_All_Attachments_From_SpItem(item,list);
 ```
-### Uplad an Attachment to a SpItem
+### Upload an Attachment to a SpItem
 ```c#
 int yourItemId = 100;
 string path = @"C:\yourpath\FILENAME.txt";
