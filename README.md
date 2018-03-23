@@ -18,18 +18,8 @@ myUT.Credentials = new NetworkCredential("USERNAME", "PASSWORD");
 SpList listA = myUT.Get_SpList_By_Title("LISTNAME");
 SpList listB = myUT.Get_SpList_By_ID("GUID"); // e.g.: "bacfa614-08de-428e-be54-24d673600901"
 ```
-### Create a new List
-```c#
-SpList newList = new SpList();
-newList.SpListTemplateType = SpListTemplateType.GenericList;
-newList.SetProperty("Title","LISTTITLE");
-newList.SetProperty("Description","DESCRIPTION");
-newList.SetProperty("AllowContentTypes", "true");
-newList.SetProperty("ContentTypesEnabled", "false");
-myUt.Create_SP_List(newList);
-```
-### Update a List
-The following Properties "should" be able to be changed:
+### Changeable Listproperties
+The following Properties "should" be able to be set or changed:
  - Title
  - Description
  - ContentTypesEnabled
@@ -52,6 +42,17 @@ The following Properties "should" be able to be changed:
  - NoCrawl
  - ServerTemplateCanCreateFolders
  - BaseTemplate
+### Create a new List
+```c#
+SpList newList = new SpList();
+newList.SpListTemplateType = SpListTemplateType.GenericList;
+newList.SetProperty("Title","LISTTITLE");
+newList.SetProperty("Description","DESCRIPTION");
+newList.SetProperty("AllowContentTypes", "true");
+newList.SetProperty("ContentTypesEnabled", "false");
+myUt.Create_SP_List(newList);
+```
+### Update a List
 ```c#
 SpList list = myUT.Get_SpList_By_Title("LISTNAME");
 list.SetProperty("Title","NEWTITLE");
