@@ -91,7 +91,7 @@ SpFolderCollection folderCollection = myUT.Get_SpFolderCollection_By_Path("LIBRA
 
 // By SpFolder
 SpFolder folder = myUT.Get_SpFolder_By_Path("LIBRARYNAME/FOLDERNAME");
-SpFolderCollection folderCollection = Get_All_SpFolders_From_SpFolder(folder);
+SpFolderCollection folderCollection = myUT.Get_All_SpFolders_From_SpFolder(folder);
 ```
 ### Create a new SpFolder
 ```c#
