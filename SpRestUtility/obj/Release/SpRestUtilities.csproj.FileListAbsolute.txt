@@ -1,0 +1,5 @@
+C:\Users\UrbanAl\Documents\DEV\CodeStore\SpRestUtility\SpRestUtility\bin\Release\SP_REST_UTILITY.dll
+C:\Users\UrbanAl\Documents\DEV\CodeStore\SpRestUtility\SpRestUtility\bin\Release\SP_REST_UTILITY.pdb
+C:\Users\UrbanAl\Documents\DEV\CodeStore\SpRestUtility\SpRestUtility\obj\Release\SpRestUtilities.csprojResolveAssemblyReference.cache
+C:\Users\UrbanAl\Documents\DEV\CodeStore\SpRestUtility\SpRestUtility\obj\Release\SP_REST_UTILITY.dll
+C:\Users\UrbanAl\Documents\DEV\CodeStore\SpRestUtility\SpRestUtility\obj\Release\SP_REST_UTILITY.pdb
