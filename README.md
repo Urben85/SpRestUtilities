@@ -95,6 +95,28 @@ SpList list = myUT.Get_SpList_By_Title("LISTNAME");
 SpItem item = myUT.Get_SpItem_By_ID(yourItemId,list);
 myUT.Delete_SpItem(item,list);
 ```
+### Get an Attachment from a SpItem by Filename
+```c#
+int yourItemId = 100;
+SpList list = myUT.Get_SpList_By_Title("LISTNAME");
+SpItem item = myUT.Get_SpItem_By_ID(yourItemId,list);
+SpFile attachment = myUT.Get_Attachment_From_SpItem("FILENAME.txt",item,list);
+```
+### Get all Attachments from a SpItem
+```c#
+int yourItemId = 100;
+SpList list = myUT.Get_SpList_By_Title("LISTNAME");
+SpItem item = myUT.Get_SpItem_By_ID(yourItemId,list);
+SpFileCollection attachments = myUT.Get_All_Attachments_From_SpItem(item,list);
+```
+### Uplad an Attachment to a SpItem
+```c#
+int yourItemId = 100;
+string path = @"C:\yourpath\FILENAME.txt";
+SpList list = myUT.Get_SpList_By_Title("LISTNAME");
+SpItem item = myUT.Get_SpItem_By_ID(yourItemId,list);
+SpFile attachment = myUT.Upload_SpItem_Attachment(path,item,list);
+```
 
 ## Library Utilities
 documentation follows..
