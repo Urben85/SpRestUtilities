@@ -5,7 +5,7 @@ The Sharepoint rest api is very powerful but writing code that does something wi
 After referencing this solution in your project, which can be basically anything, all you have to do is to initialize the SpRestUtilities and tell it where to operate (sp-site-url) and who you are (username and pw).
 
 ```c#
-using SP_REST_UTILITY;
+using SpRestUtility;
 
 SpRestUtilities myUT = new SpRestUtilities();
 myUT.SiteUrl = "https://yoursharepoint.com/yoursite";
