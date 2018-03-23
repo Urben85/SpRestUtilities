@@ -110,7 +110,7 @@ item.Data["SingleId"] = "-1" // Resets the Field to empty
 
 // Set LookupMulti and UserMulti
 item.Data["MultiId"] = "{'results':[100,101]}"; // "Id" must be applied at the end of the Fieldname!
-item.Data["SingleId"] = "{'results':[]}" // Resets the Field to empty
+item.Data["SingleId"] = "{'results':[]}"; // Resets the Field to empty
 
 // Set URL Field
 item.Data["UrlField"] = "{'Url':'https://github.com','Description':'GitHub'}";
