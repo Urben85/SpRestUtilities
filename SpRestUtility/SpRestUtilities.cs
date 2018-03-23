@@ -338,73 +338,6 @@ namespace SpRestUtility
             }
         }
 
-        public SpFile Get_SpFile_By_Filename_From_SpFolder(string fileName, SpFolder folder)
-        {
-            try
-            {
-                HttpWebRequest restRequest = (HttpWebRequest)WebRequest.Create(_siteUrl + "_api/web/GetFolderByServerRelativeUrl('" + folder.Properties["ServerRelativeUrl"] + "')/Files('" + fileName + "')");
-                restRequest.Method = "GET";
-                restRequest.Credentials = Credentials;
-                restRequest.Accept = "application/atom+xml";
-
-                HttpWebResponse restResponse = (HttpWebResponse)restRequest.GetResponse();
-
-                XmlDocument responseXmlDoc = new XmlDocument();
-                StreamReader responseReader = new StreamReader(restResponse.GetResponseStream());
-                responseXmlDoc.LoadXml(responseReader.ReadToEnd());
-
-                XmlNamespaceManager iManager = ReturnSpXmlNameSpaceManager(responseXmlDoc);
-                XmlNode responseNode = responseXmlDoc.SelectSingleNode("//atom:entry", iManager);
-                XmlDocument responseNodeXmlDoc = new XmlDocument();
-                responseNodeXmlDoc.LoadXml(responseNode.OuterXml);
-
-                return ReturnFileByXML(responseNodeXmlDoc);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-    
-        public SpFileCollection Get_All_SpFiles_From_SpFolder(SpFolder folder)
-        {
-            try
-            {
-                HttpWebRequest restRequest = (HttpWebRequest)WebRequest.Create(_siteUrl + "_api/web/GetFolderByServerRelativeUrl('" + folder.Properties["ServerRelativeUrl"] + "')/Files");
-                restRequest.Method = "GET";
-                restRequest.Credentials = Credentials;
-                restRequest.Accept = "application/atom+xml";
-
-                HttpWebResponse restResponse = (HttpWebResponse)restRequest.GetResponse();
-
-                XmlDocument responseXmlDoc = new XmlDocument();
-                StreamReader responseReader = new StreamReader(restResponse.GetResponseStream());
-                responseXmlDoc.LoadXml(responseReader.ReadToEnd());
-
-                XmlNamespaceManager iManager = ReturnSpXmlNameSpaceManager(responseXmlDoc);
-                XmlNode responseNode = responseXmlDoc.SelectSingleNode("//atom:feed", iManager);
-
-                XmlDocument responseNodeXmlDoc = new XmlDocument();
-                responseNodeXmlDoc.LoadXml(responseNode.OuterXml);
-                XmlNodeList fileNodes = responseNodeXmlDoc.SelectNodes("//atom:entry", iManager);
-
-                SpFileCollection fileCollection = new SpFileCollection();
-                foreach (XmlNode node in fileNodes)
-                {
-                    XmlDocument fileXmlDoc = new XmlDocument();
-                    fileXmlDoc.LoadXml(node.OuterXml);
-                    SpFile file = ReturnFileByXML(fileXmlDoc);
-                    fileCollection.Files.Add(file);
-                }
-
-                return fileCollection;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
         public SpFolder Create_SpFolder(string folderPath, SpList list = null)
         {
             try
@@ -495,6 +428,73 @@ namespace SpRestUtility
 
                 HttpWebResponse restResponse = (HttpWebResponse)restRequest.GetResponse();
                 return restResponse;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public SpFile Get_SpFile_By_Filename_From_SpFolder(string fileName, SpFolder folder)
+        {
+            try
+            {
+                HttpWebRequest restRequest = (HttpWebRequest)WebRequest.Create(_siteUrl + "_api/web/GetFolderByServerRelativeUrl('" + folder.Properties["ServerRelativeUrl"] + "')/Files('" + fileName + "')");
+                restRequest.Method = "GET";
+                restRequest.Credentials = Credentials;
+                restRequest.Accept = "application/atom+xml";
+
+                HttpWebResponse restResponse = (HttpWebResponse)restRequest.GetResponse();
+
+                XmlDocument responseXmlDoc = new XmlDocument();
+                StreamReader responseReader = new StreamReader(restResponse.GetResponseStream());
+                responseXmlDoc.LoadXml(responseReader.ReadToEnd());
+
+                XmlNamespaceManager iManager = ReturnSpXmlNameSpaceManager(responseXmlDoc);
+                XmlNode responseNode = responseXmlDoc.SelectSingleNode("//atom:entry", iManager);
+                XmlDocument responseNodeXmlDoc = new XmlDocument();
+                responseNodeXmlDoc.LoadXml(responseNode.OuterXml);
+
+                return ReturnFileByXML(responseNodeXmlDoc);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public SpFileCollection Get_All_SpFiles_From_SpFolder(SpFolder folder)
+        {
+            try
+            {
+                HttpWebRequest restRequest = (HttpWebRequest)WebRequest.Create(_siteUrl + "_api/web/GetFolderByServerRelativeUrl('" + folder.Properties["ServerRelativeUrl"] + "')/Files");
+                restRequest.Method = "GET";
+                restRequest.Credentials = Credentials;
+                restRequest.Accept = "application/atom+xml";
+
+                HttpWebResponse restResponse = (HttpWebResponse)restRequest.GetResponse();
+
+                XmlDocument responseXmlDoc = new XmlDocument();
+                StreamReader responseReader = new StreamReader(restResponse.GetResponseStream());
+                responseXmlDoc.LoadXml(responseReader.ReadToEnd());
+
+                XmlNamespaceManager iManager = ReturnSpXmlNameSpaceManager(responseXmlDoc);
+                XmlNode responseNode = responseXmlDoc.SelectSingleNode("//atom:feed", iManager);
+
+                XmlDocument responseNodeXmlDoc = new XmlDocument();
+                responseNodeXmlDoc.LoadXml(responseNode.OuterXml);
+                XmlNodeList fileNodes = responseNodeXmlDoc.SelectNodes("//atom:entry", iManager);
+
+                SpFileCollection fileCollection = new SpFileCollection();
+                foreach (XmlNode node in fileNodes)
+                {
+                    XmlDocument fileXmlDoc = new XmlDocument();
+                    fileXmlDoc.LoadXml(node.OuterXml);
+                    SpFile file = ReturnFileByXML(fileXmlDoc);
+                    fileCollection.Files.Add(file);
+                }
+
+                return fileCollection;
             }
             catch (Exception ex)
             {
