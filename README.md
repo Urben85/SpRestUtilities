@@ -162,7 +162,7 @@ SpField field = myUT.Get_SpField_By_ID("GUID",list); // e.g.: "bacfa614-08de-428
 ### Get all SpFields from List
 ```c#
 SpList list = myUT.Get_SpList_By_Title("LISTNAME");
-SpFieldCollection = myUT.Get_SpFields_From_List(list);
+SpFieldCollection fieldCollection = myUT.Get_SpFields_From_List(list);
 ```
 ### Create a SpField on a List
 ```c#
