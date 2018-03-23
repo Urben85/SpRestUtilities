@@ -86,7 +86,6 @@ SpFolderCollection folderCollection = myUT.Get_SpFolderCollection_By_Path("FOLDE
 // With path only
 SpFolderCollection folderCollection = myUT.Get_SpFolderCollection_By_Path("LIBRARYNAME/FOLDERNAME");
 
-
 // Get all Folders in Subfolder
 SpFolderCollection folderCollection = myUT.Get_SpFolderCollection_By_Path("LIBRARYNAME/FOLDERNAME/SUBFOLDERNAME");
 
