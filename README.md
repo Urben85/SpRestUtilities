@@ -98,6 +98,24 @@ SpItem item = myUT.Get_SpItem_By_ID(yourItemId,list);
 item.SetFieldValue("Title","New Title");
 myUT.Update_SpItem(item,list);
 ```
+### Setting Lookups, User and URL Fields
+```c#
+int yourItemId = 100;
+SpList list = myUT.Get_SpList_By_Title("LISTNAME");
+SpItem item = myUT.Get_SpItem_By_ID(yourItemId,list);
+
+// Set LookupSingle and UserSingle
+item.Data["SingleId"] = "100"; // "Id" must be applied at the end of the Fieldname!
+item.Data["SingleId"] = "-1" // Resets the Field to empty
+
+// Set LookupMulti and UserMulti
+item.Data["MultiId"] = "{'results':[100,101]}"; // "Id" must be applied at the end of the Fieldname!
+item.Data["SingleId"] = "{'results':[]}" // Resets the Field to empty
+
+// Set URL Field
+item.Data["UrlField"] = "{'Url':'https://github.com','Description':'GitHub'}";
+item.Data["UrlField"] = "{'Url':'','Description':''}"; // Resets the Field to empty
+```
 ### Delete SpItem
 ```c#
 int yourItemId = 100;
