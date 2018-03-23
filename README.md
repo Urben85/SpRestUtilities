@@ -63,6 +63,9 @@ SpList list = myUT.Get_SpList_By_Title("LISTNAME");
 myUT.Delete_SpList(list);
 ```
 
+## Library Utilities
+documentation follows..
+
 ## Item Utilities
 ### Get SpItem by ID
 ```c#
@@ -124,9 +127,6 @@ SpList list = myUT.Get_SpList_By_Title("LISTNAME");
 SpItem item = myUT.Get_SpItem_By_ID(yourItemId,list);
 SpFile attachment = myUT.Upload_SpItem_Attachment(path,item,list);
 ```
-
-## Library Utilities
-documentation follows..
 
 ## Field Utilities
 ### Get a SpField by InternalName or Title
