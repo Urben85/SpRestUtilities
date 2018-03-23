@@ -62,3 +62,36 @@ myUT.Update_SpList(list);
 SpList list = myUT.Get_SpList_By_Title("LISTNAME");
 myUT.Delete_SpList(list);
 ```
+
+## Item Utilities
+### Get SpItem by ID
+```c#
+int yourItemId = 100;
+SpList list = myUT.Get_SpList_By_Title("LISTNAME");
+SpItem item = myUT.Get_SpItem_By_ID(yourItemId,list);
+```
+### Get SpItemCollection by optional filter
+```c#
+// Without filter example
+SpList listA = myUT.Get_SpList_By_Title("LISTNAMEA");
+SpItemCollection collection = myUT.Get_SpItem_Collection(listA);
+
+// With filter example
+SpList listB = myUT.Get_SpList_By_Title("LISTNAMEB");
+SpItemCollection collection = myUT.Get_SpItem_Collection(listB,"$filter=Fieldname eq 'Whatever'");
+```
+### Update SpItem
+```c#
+int yourItemId = 100;
+SpList list = myUT.Get_SpList_By_Title("LISTNAME");
+SpItem item = myUT.Get_SpItem_By_ID(yourItemId,list);
+item.SetFieldValue("Title","New Title");
+myUT.Update_SpItem(item,list);
+```
+### Delete SpItem
+```c#
+int yourItemId = 100;
+SpList list = myUT.Get_SpList_By_Title("LISTNAME");
+SpItem item = myUT.Get_SpItem_By_ID(yourItemId,list);
+myUT.Delete_SpItem(item,list);
+```
