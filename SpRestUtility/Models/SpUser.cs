@@ -1,4 +1,4 @@
-﻿namespace SP_REST_UTILITY
+﻿namespace SpRestUtility
 {
     public class SpUser
     {

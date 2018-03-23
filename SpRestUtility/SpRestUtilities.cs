@@ -5,7 +5,7 @@ using System.IO;
 using System.Xml;
 using System.Collections.Generic;
 
-namespace SP_REST_UTILITY
+namespace SpRestUtility
 {
     public class SpRestUtilities
     {

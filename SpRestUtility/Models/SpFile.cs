@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SP_REST_UTILITY
+namespace SpRestUtility
 {
     public class SpFile
     {

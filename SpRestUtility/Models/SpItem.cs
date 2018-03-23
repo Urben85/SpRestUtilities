@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SP_REST_UTILITY
+namespace SpRestUtility
 {
     public class SpItem
     {
