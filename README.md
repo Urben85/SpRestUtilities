@@ -115,6 +115,8 @@ item.Data["SingleId"] = "{'results':[]}" // Resets the Field to empty
 // Set URL Field
 item.Data["UrlField"] = "{'Url':'https://github.com','Description':'GitHub'}";
 item.Data["UrlField"] = "{'Url':'','Description':''}"; // Resets the Field to empty
+
+myUT.Update_SpItem(item,list);
 ```
 ### Delete SpItem
 ```c#
