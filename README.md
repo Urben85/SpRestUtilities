@@ -106,7 +106,7 @@ SpItem item = myUT.Get_SpItem_By_ID(yourItemId,list);
 
 // Set LookupSingle and UserSingle
 item.Data["SingleId"] = "100"; // "Id" must be applied at the end of the Fieldname!
-item.Data["SingleId"] = "-1" // Resets the Field to empty
+item.Data["SingleId"] = "-1"; // Resets the Field to empty
 
 // Set LookupMulti and UserMulti
 item.Data["MultiId"] = "{'results':[100,101]}"; // "Id" must be applied at the end of the Fieldname!
