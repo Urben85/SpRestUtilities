@@ -122,7 +122,21 @@ SpFile attachment = myUT.Upload_SpItem_Attachment(path,item,list);
 documentation follows..
 
 ## Field Utilities
-documentation follows..
+### Get a SpField by InternalName or Title
+```c#
+SpList list = myUT.Get_SpList_By_Title("LISTNAME");
+SpField field = myUT.Get_SpField_By_InternalName_Or_Title("InterNameOrTitle",list);
+```
+### Get a SpField by ID
+```c#
+SpList list = myUT.Get_SpList_By_Title("LISTNAME");
+SpField field = myUT.Get_SpField_By_ID("GUID",list); // e.g.: "bacfa614-08de-428e-be54-24d673600901"
+```
+### Get all SpFields from List
+```c#
+SpList list = myUT.Get_SpList_By_Title("LISTNAME");
+SpFieldCollection = myUT.Get_SpFields_From_List(list);
+```
 
 ## User Utilities
 documentation follows..
