@@ -97,10 +97,10 @@ myUT.Delete_SpItem(item,list);
 ```
 
 ## Library Utilities
-documentation to come...
+documentation follows..
 
 ## Field Utilities
-documentation to come...
+documentation follows..
 
 ## User Utilities
-documentation to come...
+documentation follows..
