@@ -95,3 +95,12 @@ SpList list = myUT.Get_SpList_By_Title("LISTNAME");
 SpItem item = myUT.Get_SpItem_By_ID(yourItemId,list);
 myUT.Delete_SpItem(item,list);
 ```
+
+## Library Utilities
+documentation to come...
+
+## Field Utilities
+documentation to come...
+
+## User Utilities
+documentation to come...
