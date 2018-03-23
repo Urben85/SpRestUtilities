@@ -137,6 +137,29 @@ SpField field = myUT.Get_SpField_By_ID("GUID",list); // e.g.: "bacfa614-08de-428
 SpList list = myUT.Get_SpList_By_Title("LISTNAME");
 SpFieldCollection = myUT.Get_SpFields_From_List(list);
 ```
+### Create a SpField on a List
+```c#
+SpList list = myUT.Get_SpList_By_Title("LISTNAME");
+SpField field = new SpField();
+field.InternalName = "MyNewField";
+field.SpFieldTypeKind = SpField.TypeKind.Text;
+field.SetProperty("SchemaXml","<Field Type=\"Text\" DisplayName=\"My new Field\" Required=\"FALSE\" />");
+myUT.Create_SpField(field,list);
+```
+### Update a SpField on a List
+```c#
+string newXmlSchema = "SchemaXmlString"; // look above
+SpList list = myUT.Get_SpList_By_Title("LISTNAME");
+SpField field = myUT.Get_SpField_By_InternalName_Or_Title("InterNameOrTitle",list);
+field.Properties["SchemaXml"] = newXmlSchema;
+myUT.Update_SpField(field,list);
+```
+### Delete a SpField from a List
+```c#
+SpList list = myUT.Get_SpList_By_Title("LISTNAME");
+SpField field = myUT.Get_SpField_By_InternalName_Or_Title("InterNameOrTitle",list);
+myUT.Delete_SpField(field,list);
+```
 
 ## User Utilities
 documentation follows..
