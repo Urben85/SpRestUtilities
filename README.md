@@ -80,6 +80,13 @@ SpItemCollection collection = myUT.Get_SpItem_Collection(listA);
 SpList listB = myUT.Get_SpList_By_Title("LISTNAMEB");
 SpItemCollection collection = myUT.Get_SpItem_Collection(listB,"$filter=Fieldname eq 'Whatever'");
 ```
+### Access Field Values
+```c#
+int yourItemId = 100;
+SpList list = myUT.Get_SpList_By_Title("LISTNAME");
+SpItem item = myUT.Get_SpItem_By_ID(yourItemId,list);
+string title = item.Data["Title"];
+```
 ### Update SpItem
 ```c#
 int yourItemId = 100;
@@ -162,4 +169,12 @@ myUT.Delete_SpField(field,list);
 ```
 
 ## User Utilities
-documentation follows..
+### Get SpUser by UserName
+```c#
+SpUser user = myUT.Get_SpUser_By_UserName("USERNAME");
+```
+### Get SpUser by Id
+```c#
+int userId = 100;
+SpUser user = myUT.Get_SpUser_By_Id(userId);
+```
