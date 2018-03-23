@@ -404,7 +404,6 @@ namespace SpRestUtility
 
                 HttpWebResponse restResponse = (HttpWebResponse)restRequest.GetResponse();
                 return restResponse;
-                return null;
             }
             catch (Exception ex)
             {
