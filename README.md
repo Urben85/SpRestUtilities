@@ -1,5 +1,5 @@
 # Sharepoint REST Utilities for C#
-The Sharepoint rest api is very powerful but writing code that does something with it can be tricky and costly sometimes. Everytime i wanted to use it i had to try to remeber how to do this and that, looking through code i've written and of course googling. So i thought it would be great to have a class library which would do all the dirty work for me and this is what this project is basically all about. But I'm warning you in advance: This hasn't been fully tested! Use it on your own responsibility!
+The Sharepoint rest api is very powerful but writing code that does something with it can be tricky and costly sometimes. Everytime i wanted to use it i had to try to remember how to do this and that, looking through code i've written and of course googling. So i thought it would be great to have a class library which would do all the dirty work for me and this is what this project is basically all about. But I'm warning you in advance: This hasn't been fully tested! Use it on your own risk! It's also still work in progress and may or my be not further developed in the future.
 
 ## Getting Started
 After referencing this solution in your project, which can be basically anything, all you have to do is to initialize the SpRestUtilities and tell it where to operate (sp-site-url) and who you are (username and pw).
@@ -86,13 +86,12 @@ SpFolderCollection folderCollection = myUT.Get_SpFolderCollection_By_Path("FOLDE
 // With path only
 SpFolderCollection folderCollection = myUT.Get_SpFolderCollection_By_Path("LIBRARYNAME/FOLDERNAME");
 
-
 // Get all Folders in Subfolder
 SpFolderCollection folderCollection = myUT.Get_SpFolderCollection_By_Path("LIBRARYNAME/FOLDERNAME/SUBFOLDERNAME");
 
 // By SpFolder
 SpFolder folder = myUT.Get_SpFolder_By_Path("LIBRARYNAME/FOLDERNAME");
-SpFolderCollection folderCollection = Get_All_SpFolders_From_SpFolder(folder);
+SpFolderCollection folderCollection = myUT.Get_All_SpFolders_From_SpFolder(folder);
 ```
 ### Create a new SpFolder
 ```c#
@@ -202,7 +201,7 @@ item.Data["SingleId"] = "-1"; // Resets the Field to empty
 
 // Set LookupMulti and UserMulti
 item.Data["MultiId"] = "{'results':[100,101]}"; // "Id" must be applied at the end of the Fieldname!
-item.Data["SingleId"] = "{'results':[]}"; // Resets the Field to empty
+item.Data["MultiId"] = "{'results':[]}"; // Resets the Field to empty
 
 // Set URL Field
 item.Data["UrlField"] = "{'Url':'https://github.com','Description':'GitHub'}";
