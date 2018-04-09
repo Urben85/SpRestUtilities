@@ -1325,7 +1325,7 @@ namespace SpRestUtility
             StringBuilder str = new StringBuilder();
             foreach (KeyValuePair<string, string> data in item.Data)
             {
-                if (!string.IsNullOrEmpty(data.Value))
+                if (data.Key != "ID" && data.Key != "Id" && !string.IsNullOrEmpty(data.Value))
                 {
                     if (data.Value.StartsWith("{"))
                         str.Append("'" + data.Key + "':" + data.Value + ",");
