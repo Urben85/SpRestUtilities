@@ -829,11 +829,13 @@ namespace SpRestUtility
                 XmlNamespaceManager fManager = ReturnSpXmlNameSpaceManager(fieldXmlDoc);
 
                 XmlNode fieldIdNode = fieldXmlDoc.SelectSingleNode("//atom:content/m:properties/d:Id", fManager);
+                XmlNode fieldInternalNameNode = fieldXmlDoc.SelectSingleNode("//atom:content/m:properties/d:InternalName", fManager);
                 XmlNode fieldTypeKindXmlNode = fieldXmlDoc.SelectSingleNode("//atom:content/m:properties/d:FieldTypeKind", fManager);
                 XmlNodeList propertyNodes = fieldXmlDoc.SelectNodes("//atom:content/m:properties", fManager);
 
                 SpField field = new SpField();
                 field.Id = fieldIdNode.InnerText;
+                field.InternalName = fieldInternalNameNode.InnerText;
                 field.FieldTypeKind = (SpFieldTypeKind)Int32.Parse(fieldTypeKindXmlNode.InnerText);
                 foreach (XmlNode node in propertyNodes)
                 {
