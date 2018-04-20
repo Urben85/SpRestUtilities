@@ -45,6 +45,19 @@ namespace SpRestUtility
                 throw ex;
             }
         }
+        
+        public SpList Try_Get_SpList_By_Title(string title)
+        {
+            try
+            {
+                SpList list = Get_SpList_By_Title(title);
+                return list;
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+        }
 
         public SpList Get_SpList_By_ID(string listID)
         {
