@@ -20,4 +20,9 @@
         SharepointGroup = 8,
         All = 15
     }
+    
+    public class SpUserCollection
+    {
+        public List<SpUser> Users = new List<SpUser>();
+    }
 }
