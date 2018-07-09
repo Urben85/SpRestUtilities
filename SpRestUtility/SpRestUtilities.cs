@@ -1239,6 +1239,44 @@ namespace SpRestUtility
                 throw ex;
             }
         }
+        
+        public SpUserCollection GetAllSpUsersFromSite()
+        {
+            string url = _siteUrl + "_api/web/siteusers";
+            SpUserCollection coll = new SpUserCollection();
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+                request.Credentials = Credentials;
+                WebResponse response = request.GetResponse();
+                using (Stream responseStream = response.GetResponseStream())
+                {
+                    using (XmlReader xmlReader = XmlReader.Create(responseStream))
+                    {
+                        XmlDocument usersXmlDoc = new XmlDocument();
+                        usersXmlDoc.Load(xmlReader);
+
+                        XmlNamespaceManager uManager = ReturnSpXmlNameSpaceManager(usersXmlDoc);
+                        XmlNodeList userNodes = usersXmlDoc.SelectNodes("//atom:entry", uManager);
+
+                        foreach (XmlNode userNode in userNodes)
+                        {
+                            XmlDocument userXmlDoc = new XmlDocument();
+                            userXmlDoc.LoadXml(userNode.OuterXml);
+                            coll.Users.Add(ReturnUserByXML(userXmlDoc));
+                        }
+                    }
+
+                }
+
+                return coll;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
 
         private SpUser ReturnUserByXML(XmlDocument userXmlDoc)
         {
