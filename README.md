@@ -238,7 +238,13 @@ SpList list = myUT.Get_SpList_By_Title("LISTNAME");
 SpItem item = myUT.Get_SpItem_By_ID(yourItemId,list);
 SpFile attachment = myUT.Upload_SpItem_Attachment(path,item,list);
 ```
-
+### Rename an Attachment of a SpItem
+```c#
+SpList list = ut.Get_SpList_By_Title("LISTNAME");
+SpItem item = ut.Get_SpItem_By_ID(1, list);
+SpFile file = ut.Get_Attachment_From_SpItem("FILENAME.TYPE", item, list);
+ut.Rename_SpItem_Attachment("NEWFILENAME.TYPE", file, list);
+```
 ## Field Utilities
 ### Get a SpField by InternalName or Title
 ```c#
