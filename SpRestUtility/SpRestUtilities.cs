@@ -1132,6 +1132,30 @@ namespace SpRestUtility
                 throw ex;
             }
         }
+        
+        public HttpWebResponse Rename_SpItem_Attachment(string newFileName, SpFile file, SpList list)
+        {
+            try
+            {
+                GetAndSetFormDigest();
+
+                string newPath = file.Properties["ServerRelativeUrl"].Replace(file.Properties["FileName"], newFileName);
+
+                HttpWebRequest restRequest = (HttpWebRequest)WebRequest.Create(_siteUrl + "_api/web/getfilebyserverrelativeurl('" + file.Properties["ServerRelativeUrl"] + "')/moveto(newurl='" + newPath + "', flags=1)");
+                restRequest.Method = "POST";
+                restRequest.Credentials = Credentials;
+                restRequest.ContentLength = 0;
+                restRequest.Headers.Add("X-HTTP-Method", "PUT");
+                restRequest.Headers.Add("X-RequestDigest", _formDigest);
+
+                HttpWebResponse restResponse = (HttpWebResponse)restRequest.GetResponse();
+                return restResponse;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         private SpItem ReturnItemByXML(XmlDocument itemXmlDoc)
         {
