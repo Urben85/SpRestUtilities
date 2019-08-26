@@ -1133,7 +1133,7 @@ namespace SpRestUtility
             }
         }
         
-        public HttpWebResponse Rename_SpItem_Attachment(string newFileName, SpFile file, SpList list)
+        public HttpWebResponse Rename_SpItem_Attachment(string newFileName, SpFile file)
         {
             try
             {
