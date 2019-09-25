@@ -15,8 +15,8 @@ myUT.Credentials = new NetworkCredential("USERNAME", "PASSWORD");
 ## List Utilities
 ### Get SpList by Title or its Id
 ```c#
-SpList listA = myUT.Get_SpList_By_Title("LISTNAME");
-SpList listB = myUT.Get_SpList_By_ID("GUID"); // e.g.: "bacfa614-08de-428e-be54-24d673600901"
+SpList listA = myUT.GetSpListByTitle("LISTNAME");
+SpList listB = myUT.GetSpListByID("GUID"); // e.g.: "bacfa614-08de-428e-be54-24d673600901"
 ```
 ### Changeable Listproperties
 The following Properties "should" be able to be set or changed:
@@ -50,150 +50,150 @@ newList.SetProperty("Title","LISTTITLE");
 newList.SetProperty("Description","DESCRIPTION");
 newList.SetProperty("AllowContentTypes", "true");
 newList.SetProperty("ContentTypesEnabled", "false");
-myUt.Create_SP_List(newList);
+myUt.CreateSPList(newList);
 ```
 ### Update a List
 ```c#
-SpList list = myUT.Get_SpList_By_Title("LISTNAME");
+SpList list = myUT.GetSpListByTitle("LISTNAME");
 list.SetProperty("Title","NEWTITLE");
-myUT.Update_SpList(list);
+myUT.UpdateSpList(list);
 ```
 ### Delete a List
 ```c#
-SpList list = myUT.Get_SpList_By_Title("LISTNAME");
-myUT.Delete_SpList(list);
+SpList list = myUT.GetSpListByTitle("LISTNAME");
+myUT.DeleteSpList(list);
 ```
 
 ## Library Utilities
 ### Get a SpFolder
 ```c#
 // With a Library
-SpList lilibrary = myUT.Get_SpList_By_Title("LIBRARYNAME");
-SpFolder folder = myUT.Get_SpFolder_By_Path("FOLDERNAME",library);
+SpList lilibrary = myUT.GetSpListByTitle("LIBRARYNAME");
+SpFolder folder = myUT.GetSpFolderByPath("FOLDERNAME",library);
 
 // With path only
-SpFolder folder = myUT.Get_SpFolder_By_Path("LIBRARYNAME/FOLDERNAME");
+SpFolder folder = myUT.GetSpFolderByPath("LIBRARYNAME/FOLDERNAME");
 
 // Get a Subfolder
-SpFolder folder = myUT.Get_SpFolder_By_Path("LIBRARYNAME/FOLDERNAME/SUBFOLDERNAME");
+SpFolder folder = myUT.GetSpFolderByPath("LIBRARYNAME/FOLDERNAME/SUBFOLDERNAME");
 ```
 ### Get all SpFolders from SpFolder
 ```c#
 // With path and Library
-SpList lilibrary = myUT.Get_SpList_By_Title("LIBRARYNAME");
-SpFolderCollection folderCollection = myUT.Get_SpFolderCollection_By_Path("FOLDERNAME",library);
+SpList lilibrary = myUT.GetSpListByTitle("LIBRARYNAME");
+SpFolderCollection folderCollection = myUT.GetSpFolderCollectionByPath("FOLDERNAME",library);
 
 // With path only
-SpFolderCollection folderCollection = myUT.Get_SpFolderCollection_By_Path("LIBRARYNAME/FOLDERNAME");
+SpFolderCollection folderCollection = myUT.GetSpFolderCollectionByPath("LIBRARYNAME/FOLDERNAME");
 
 // Get all Folders in Subfolder
-SpFolderCollection folderCollection = myUT.Get_SpFolderCollection_By_Path("LIBRARYNAME/FOLDERNAME/SUBFOLDERNAME");
+SpFolderCollection folderCollection = myUT.Get_SpFolderCollectionByPath("LIBRARYNAME/FOLDERNAME/SUBFOLDERNAME");
 
 // By SpFolder
-SpFolder folder = myUT.Get_SpFolder_By_Path("LIBRARYNAME/FOLDERNAME");
-SpFolderCollection folderCollection = myUT.Get_All_SpFolders_From_SpFolder(folder);
+SpFolder folder = myUT.GetSpFolderByPath("LIBRARYNAME/FOLDERNAME");
+SpFolderCollection folderCollection = myUT.GetAllSpFoldersFromSpFolder(folder);
 ```
 ### Create a new SpFolder
 ```c#
 // With path and Library
-SpList lilibrary = myUT.Get_SpList_By_Title("LIBRARYNAME");
-SpFolder folder = myUT.Create_SpFolder("FOLDERNAME",library);
+SpList lilibrary = myUT.GetSpListByTitle("LIBRARYNAME");
+SpFolder folder = myUT.CreateSpFolder("FOLDERNAME",library);
 
 // With path only
-SpFolder folder = myUT.Create_SpFolder("LIBRARYNAME/FOLDERNAME");
+SpFolder folder = myUT.CreateSpFolder("LIBRARYNAME/FOLDERNAME");
 
 // Create a Subfolder
-SpFolder subFolder = myUT.Create_SpFolder("LIBRARYNAME/FOLDERNAME/SUBFOLDERNAME"); // Parent Folders must exist!
+SpFolder subFolder = myUT.CreateSpFolder("LIBRARYNAME/FOLDERNAME/SUBFOLDERNAME"); // Parent Folders must exist!
 ```
 ### Delete a SpFolder
 ```c#
-SpFolder folder = myUT.Get_SpFolder_By_Path("LIBRARYNAME/FOLDERNAME");
-myUT.Delete_SpFolder(folder);
+SpFolder folder = myUT.GetSpFolderByPath("LIBRARYNAME/FOLDERNAME");
+myUT.DeleteSpFolder(folder);
 ```
 ### Get a SpFile by FileName from SpFolder
 ```c#
-SpFolder folder = myUT.Get_SpFolder_By_Path("LIBRARYNAME/FOLDERNAME");
-SpFile file = myUT.Get_SpFile_By_Filename_From_SpFolder("FILENAME.txt",folder);
+SpFolder folder = myUT.GetSpFolderByPath("LIBRARYNAME/FOLDERNAME");
+SpFile file = myUT.GetSpFileByFilename_From_SpFolder("FILENAME.txt",folder);
 ```
 ### Get all SpFiles by FileName from SpFolder
 ```c#
-SpFolder folder = myUT.Get_SpFolder_By_Path("LIBRARYNAME/FOLDERNAME");
-SpFileCollection file = myUT.Get_All_SpFiles_From_SpFolder(folder);
+SpFolder folder = myUT.GetSpFolderByPath("LIBRARYNAME/FOLDERNAME");
+SpFileCollection file = myUT.GetAllSpFilesFromSpFolder(folder);
 ```
 ### Upload a File into a SpFolder
 ```c#
 string path = @"C:\yourpath\FILENAME.txt";
-SpFolder folder = myUT.Get_SpFolder_By_Path("LIBRARYNAME/FOLDERNAME");
+SpFolder folder = myUT.GetSpFolderByPath("LIBRARYNAME/FOLDERNAME");
 
 // Auto overwrite
-SpFile file = myUT.Upload_SpFile_To_SpFolder(path,folder); // if overwrite is undefined it is set to true
+SpFile file = myUT.UploadSpFileToSpFolder(path,folder); // if overwrite is undefined it is set to true
 
 // overwrite false
-SpFile file = myUT.Upload_SpFile_To_SpFolder(path,folder,false);
+SpFile file = myUT.UploadSpFileToSpFolder(path,folder,false);
 ```
 ### Delete SpFile
 ```c#
-SpFolder folder = myUT.Get_SpFolder_By_Path("LIBRARYNAME/FOLDERNAME");
-SpFile file = myUT.Get_SpFile_By_Filename_From_SpFolder("FILENAME.txt",folder);
-myUT.Delete_SpFile(file);
+SpFolder folder = myUT.GetSpFolderByPath("LIBRARYNAME/FOLDERNAME");
+SpFile file = myUT.GetSpFileByFilenameFromSpFolder("FILENAME.txt",folder);
+myUT.DeleteSpFile(file);
 ```
 ### Move SpFile to another SpFolder
 ```c#
-SpFolder sourceFolder = myUT.Get_SpFolder_By_Path("LIBRARYNAME/FOLDERNAME");
-SpFile file = myUT.Get_SpFile_By_Filename_From_SpFolder("FILENAME.txt",sourceFolder);
-SpFolder destFolder = myUT.Get_SpFolder_By_Path("LIBRARYNAME/DESTINATIONFOLDERNAME");
-myUT.Move_SpFile(file,destFolder);
+SpFolder sourceFolder = myUT.GetSpFolderByPath("LIBRARYNAME/FOLDERNAME");
+SpFile file = myUT.GetSpFileByFilenameFromSpFolder("FILENAME.txt",sourceFolder);
+SpFolder destFolder = myUT.GetSpFolderByPath("LIBRARYNAME/DESTINATIONFOLDERNAME");
+myUT.MoveSpFile(file,destFolder);
 ```
 ### Copy SpFile to another SpFolder
 ```c#
-SpFolder sourceFolder = myUT.Get_SpFolder_By_Path("LIBRARYNAME/FOLDERNAME");
-SpFile file = myUT.Get_SpFile_By_Filename_From_SpFolder("FILENAME.txt",sourceFolder);
-SpFolder destFolder = myUT.Get_SpFolder_By_Path("LIBRARYNAME/DESTINATIONFOLDERNAME");
+SpFolder sourceFolder = myUT.GetSpFolderByPath("LIBRARYNAME/FOLDERNAME");
+SpFile file = myUT.GetSpFileByFilenameFromSpFolder("FILENAME.txt",sourceFolder);
+SpFolder destFolder = myUT.GetSpFolderByPath("LIBRARYNAME/DESTINATIONFOLDERNAME");
 
 // Auto overwrite
-myUT.Copy_SpFile(file,destFolder);
+myUT.CopySpFile(file,destFolder);
 
 // overwrite false
-myUT.Copy_SpFile(file,destFolder,false);
+myUT.CopySpFile(file,destFolder,false);
 ```
 
 ## Item Utilities
 ### Get SpItem by ID
 ```c#
 int yourItemId = 100;
-SpList list = myUT.Get_SpList_By_Title("LISTNAME");
-SpItem item = myUT.Get_SpItem_By_ID(yourItemId,list);
+SpList list = myUT.GetSpListByTitle("LISTNAME");
+SpItem item = myUT.GetSpItemByID(yourItemId,list);
 ```
 ### Get SpItemCollection by optional filter
 ```c#
 // Without filter example
-SpList listA = myUT.Get_SpList_By_Title("LISTNAMEA");
-SpItemCollection collection = myUT.Get_SpItem_Collection(listA);
+SpList listA = myUT.GetSpListByTitle("LISTNAMEA");
+SpItemCollection collection = myUT.GetSpItemCollection(listA);
 
 // With filter example
-SpList listB = myUT.Get_SpList_By_Title("LISTNAMEB");
-SpItemCollection collection = myUT.Get_SpItem_Collection(listB,"$filter=Fieldname eq 'Whatever'");
+SpList listB = myUT.GetSpListByTitle("LISTNAMEB");
+SpItemCollection collection = myUT.Get_SpItemCollection(listB,"$filter=Fieldname eq 'Whatever'");
 ```
 ### Access Field Values
 ```c#
 int yourItemId = 100;
-SpList list = myUT.Get_SpList_By_Title("LISTNAME");
-SpItem item = myUT.Get_SpItem_By_ID(yourItemId,list);
+SpList list = myUT.GetSpListByTitle("LISTNAME");
+SpItem item = myUT.GetSpItemByID(yourItemId,list);
 string title = item.Data["Title"];
 ```
 ### Update SpItem
 ```c#
 int yourItemId = 100;
-SpList list = myUT.Get_SpList_By_Title("LISTNAME");
-SpItem item = myUT.Get_SpItem_By_ID(yourItemId,list);
+SpList list = myUT.GetSpListByTitle("LISTNAME");
+SpItem item = myUT.GetSpItemByID(yourItemId,list);
 item.SetFieldValue("Title","New Title");
 myUT.Update_SpItem(item,list);
 ```
 ### Setting Lookups, User and URL Fields
 ```c#
 int yourItemId = 100;
-SpList list = myUT.Get_SpList_By_Title("LISTNAME");
-SpItem item = myUT.Get_SpItem_By_ID(yourItemId,list);
+SpList list = myUT.GetSpListByTitle("LISTNAME");
+SpItem item = myUT.GetSpItemByID(yourItemId,list);
 
 // Set LookupSingle and UserSingle
 item.Data["SingleId"] = "100"; // "Id" must be applied at the end of the Fieldname!
@@ -207,63 +207,63 @@ item.Data["MultiId"] = "{'results':[]}"; // Resets the Field to empty
 item.Data["UrlField"] = "{'Url':'https://github.com','Description':'GitHub'}";
 item.Data["UrlField"] = "{'Url':'','Description':''}"; // Resets the Field to empty
 
-myUT.Update_SpItem(item,list);
+myUT.UpdateSpItem(item,list);
 ```
 ### Delete SpItem
 ```c#
 int yourItemId = 100;
-SpList list = myUT.Get_SpList_By_Title("LISTNAME");
-SpItem item = myUT.Get_SpItem_By_ID(yourItemId,list);
-myUT.Delete_SpItem(item,list);
+SpList list = myUT.GetSpListByTitle("LISTNAME");
+SpItem item = myUT.GetSpItemByID(yourItemId,list);
+myUT.DeleteSpItem(item,list);
 ```
 ### Get an Attachment from a SpItem by Filename
 ```c#
 int yourItemId = 100;
-SpList list = myUT.Get_SpList_By_Title("LISTNAME");
-SpItem item = myUT.Get_SpItem_By_ID(yourItemId,list);
-SpFile attachment = myUT.Get_Attachment_From_SpItem("FILENAME.txt",item,list);
+SpList list = myUT.GetSpListByTitle("LISTNAME");
+SpItem item = myUT.GetSpItemByID(yourItemId,list);
+SpFile attachment = myUT.GetAttachmentFromSpItem("FILENAME.txt",item,list);
 ```
 ### Get all Attachments from a SpItem
 ```c#
 int yourItemId = 100;
-SpList list = myUT.Get_SpList_By_Title("LISTNAME");
-SpItem item = myUT.Get_SpItem_By_ID(yourItemId,list);
-SpFileCollection attachments = myUT.Get_All_Attachments_From_SpItem(item,list);
+SpList list = myUT.GetSpListByTitle("LISTNAME");
+SpItem item = myUT.GetSpItemByID(yourItemId,list);
+SpFileCollection attachments = myUT.GetAllAttachmentsFromSpItem(item,list);
 ```
 ### Upload an Attachment to a SpItem
 ```c#
 int yourItemId = 100;
 string path = @"C:\yourpath\FILENAME.txt";
-SpList list = myUT.Get_SpList_By_Title("LISTNAME");
-SpItem item = myUT.Get_SpItem_By_ID(yourItemId,list);
-SpFile attachment = myUT.Upload_SpItem_Attachment(path,item,list);
+SpList list = myUT.GetSpListByTitle("LISTNAME");
+SpItem item = myUT.GetSpItemByID(yourItemId,list);
+SpFile attachment = myUT.UploadSpItemAttachment(path,item,list);
 ```
 ### Rename an Attachment of a SpItem
 ```c#
-SpList list = ut.Get_SpList_By_Title("LISTNAME");
-SpItem item = ut.Get_SpItem_By_ID(1, list);
-SpFile file = ut.Get_Attachment_From_SpItem("FILENAME.TYPE", item, list);
-ut.Rename_SpItem_Attachment("NEWFILENAME.TYPE", file);
+SpList list = ut.GetSpListByTitle("LISTNAME");
+SpItem item = ut.GetSpItemByID(1, list);
+SpFile file = ut.GetAttachmentFromSpItem("FILENAME.TYPE", item, list);
+ut.RenameSpItemAttachment("NEWFILENAME.TYPE", file);
 ```
 ## Field Utilities
 ### Get a SpField by InternalName or Title
 ```c#
-SpList list = myUT.Get_SpList_By_Title("LISTNAME");
-SpField field = myUT.Get_SpField_By_InternalName_Or_Title("InterNameOrTitle",list);
+SpList list = myUT.GetSpListByTitle("LISTNAME");
+SpField field = myUT.GetSpFieldByInternalNameOrTitle("InterNameOrTitle",list);
 ```
 ### Get a SpField by ID
 ```c#
-SpList list = myUT.Get_SpList_By_Title("LISTNAME");
-SpField field = myUT.Get_SpField_By_ID("GUID",list); // e.g.: "bacfa614-08de-428e-be54-24d673600901"
+SpList list = myUT.GetSpListByTitle("LISTNAME");
+SpField field = myUT.GetSpFieldByID("GUID",list); // e.g.: "bacfa614-08de-428e-be54-24d673600901"
 ```
 ### Get all SpFields from List
 ```c#
-SpList list = myUT.Get_SpList_By_Title("LISTNAME");
-SpFieldCollection fieldCollection = myUT.Get_SpFields_From_List(list);
+SpList list = myUT.GetSpListByTitle("LISTNAME");
+SpFieldCollection fieldCollection = myUT.GetSpFieldsFromList(list);
 ```
 ### Create a SpField on a List
 ```c#
-SpList list = myUT.Get_SpList_By_Title("LISTNAME");
+SpList list = myUT.GetSpListByTitle("LISTNAME");
 SpField field = new SpField();
 field.InternalName = "MyNewField";
 field.SpFieldTypeKind = SpField.TypeKind.Text;
@@ -274,24 +274,24 @@ myUT.Create_SpField(field,list);
 ```c#
 string newXmlSchema = "SchemaXmlString"; // look above
 SpList list = myUT.Get_SpList_By_Title("LISTNAME");
-SpField field = myUT.Get_SpField_By_InternalName_Or_Title("InterNameOrTitle",list);
+SpField field = myUT.GetSpFieldByInternalNameOrTitle("InterNameOrTitle",list);
 field.Properties["SchemaXml"] = newXmlSchema;
-myUT.Update_SpField(field,list);
+myUT.UpdateSpField(field,list);
 ```
 ### Delete a SpField from a List
 ```c#
-SpList list = myUT.Get_SpList_By_Title("LISTNAME");
-SpField field = myUT.Get_SpField_By_InternalName_Or_Title("InterNameOrTitle",list);
-myUT.Delete_SpField(field,list);
+SpList list = myUT.GetSpListByTitle("LISTNAME");
+SpField field = myUT.GetSpFieldByInternalNameOrTitle("InterNameOrTitle",list);
+myUT.DeleteSpField(field,list);
 ```
 
 ## User Utilities
 ### Get SpUser by UserName
 ```c#
-SpUser user = myUT.Get_SpUser_By_UserName("USERNAME");
+SpUser user = myUT.GetSpUserByUserName("USERNAME");
 ```
 ### Get SpUser by Id
 ```c#
 int userId = 100;
-SpUser user = myUT.Get_SpUser_By_Id(userId);
+SpUser user = myUT.GetSpUserById(userId);
 ```
