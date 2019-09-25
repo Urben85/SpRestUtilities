@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Net;
 using System.IO;
@@ -29,7 +29,7 @@ namespace SpRestUtility
 
         #region All Utilities
         #region List Utilities
-        public SpList Get_SpList_By_Title(string title)
+        public SpList GetSpListByTitle(string title)
         {
             try
             {
@@ -45,12 +45,12 @@ namespace SpRestUtility
                 throw ex;
             }
         }
-        
-        public SpList Try_Get_SpList_By_Title(string title)
+
+        public SpList TryGetSpListByTitle(string title)
         {
             try
             {
-                SpList list = Get_SpList_By_Title(title);
+                SpList list = GetSpListByTitle(title);
                 return list;
             }
             catch(Exception ex)
@@ -59,7 +59,7 @@ namespace SpRestUtility
             }
         }
 
-        public SpList Get_SpList_By_ID(string listID)
+        public SpList GetSpListByID(string listID)
         {
             try
             {
@@ -76,7 +76,7 @@ namespace SpRestUtility
             }
         }
 
-        public SpList Create_SpList(SpList list)
+        public SpList CreateSpList(SpList list)
         {
             try
             {
@@ -112,7 +112,7 @@ namespace SpRestUtility
             }
         }
 
-        public HttpWebResponse Update_SpList(SpList list)
+        public HttpWebResponse UpdateSpList(SpList list)
         {
             try
             {
@@ -145,7 +145,7 @@ namespace SpRestUtility
             }
         }
 
-        public HttpWebResponse Delete_SpList(SpList list)
+        public HttpWebResponse DeleteSpList(SpList list)
         {
             try
             {
@@ -247,7 +247,7 @@ namespace SpRestUtility
         #endregion
 
         #region Library Utilities
-        public SpFolder Get_SpFolder_By_Path(string folderPath, SpList list = null)
+        public SpFolder GetSpFolderByPath(string folderPath, SpList list = null)
         {
             try
             {
@@ -273,7 +273,7 @@ namespace SpRestUtility
             }
         }
 
-        public SpFolderCollection Get_SpFolderCollection_By_Path(string folderPath, SpList list = null)
+        public SpFolderCollection GetSpFolderCollectionByPath(string folderPath, SpList list = null)
         {
             try
             {
@@ -314,7 +314,7 @@ namespace SpRestUtility
             }
         }
 
-        public SpFolderCollection Get_All_SpFolders_From_SpFolder(SpFolder folder)
+        public SpFolderCollection GetAllSpFoldersFromSpFolder(SpFolder folder)
         {
             try
             {
@@ -351,7 +351,7 @@ namespace SpRestUtility
             }
         }
 
-        public SpFolder Create_SpFolder(string folderPath, SpList list = null)
+        public SpFolder CreateSpFolder(string folderPath, SpList list = null)
         {
             try
             {
@@ -391,7 +391,7 @@ namespace SpRestUtility
         }
 
         // Somehow this isn't working!
-        private HttpWebResponse Rename_SpFolder(string newName, SpFolder folder)
+        private HttpWebResponse RenameSpFolder(string newName, SpFolder folder)
         {
             try
             {
@@ -424,7 +424,7 @@ namespace SpRestUtility
             }
         }
 
-        public HttpWebResponse Delete_SpFolder(SpFolder folder)
+        public HttpWebResponse DeleteSpFolder(SpFolder folder)
         {
             try
             {
@@ -447,7 +447,7 @@ namespace SpRestUtility
             }
         }
 
-        public SpFile Get_SpFile_By_Filename_From_SpFolder(string fileName, SpFolder folder)
+        public SpFile GetSpFileByFilenameFromSpFolder(string fileName, SpFolder folder)
         {
             try
             {
@@ -475,7 +475,7 @@ namespace SpRestUtility
             }
         }
 
-        public SpFileCollection Get_All_SpFiles_From_SpFolder(SpFolder folder)
+        public SpFileCollection GetAllSpFilesFromSpFolder(SpFolder folder)
         {
             try
             {
@@ -514,7 +514,7 @@ namespace SpRestUtility
             }
         }
 
-        public SpFile Upload_SpFile_To_SpFolder(string filePath, SpFolder folder, bool overwrite = true)
+        public SpFile UploadSpFileToSpFolder(string filePath, SpFolder folder, bool overwrite = true)
         {
             try
             {
@@ -552,7 +552,7 @@ namespace SpRestUtility
             }
         }
 
-        public HttpWebResponse Delete_SpFile(SpFile file)
+        public HttpWebResponse DeleteSpFile(SpFile file)
         {
             try
             {
@@ -575,7 +575,7 @@ namespace SpRestUtility
             }
         }
 
-        public HttpWebResponse Move_SpFile(SpFile file, SpFolder destinationFolder)
+        public HttpWebResponse MoveSpFile(SpFile file, SpFolder destinationFolder)
         {
             try
             {
@@ -596,7 +596,7 @@ namespace SpRestUtility
             }
         }
 
-        public HttpWebResponse Copy_SpFile(SpFile file, SpFolder destinationFolder, bool overwrite = true)
+        public HttpWebResponse CopySpFile(SpFile file, SpFolder destinationFolder, bool overwrite = true)
         {
             try
             {
@@ -667,7 +667,7 @@ namespace SpRestUtility
         #endregion
 
         #region Field Utilities
-        public SpField Get_SpField_By_InternalName_Or_Title(string interNalnameOrTitle, SpList list)
+        public SpField GetSpFieldByInternalNameOrTitle(string interNalnameOrTitle, SpList list)
         {
             try
             {
@@ -691,8 +691,8 @@ namespace SpRestUtility
                 throw ex;
             }
         }
-        
-        public SpField Get_SpField_By_ID(string fieldID, SpList list)
+
+        public SpField GetSpFieldByID(string fieldID, SpList list)
         {
             try
             {
@@ -717,7 +717,7 @@ namespace SpRestUtility
             }
         }
 
-        public SpFieldCollection Get_SpFields_From_List (SpList list)
+        public SpFieldCollection GetSpFieldsFromList(SpList list)
         {
             try
             {
@@ -752,7 +752,7 @@ namespace SpRestUtility
             }
         }
 
-        public SpField Create_SpField (SpField field, SpList list)
+        public SpField CreateSpField(SpField field, SpList list)
         {
             try
             {
@@ -787,8 +787,8 @@ namespace SpRestUtility
                 throw ex;
             }
         }
-        
-        public HttpWebResponse Update_SpField (SpField field, SpList list)
+
+        public HttpWebResponse UpdateSpField(SpField field, SpList list)
         {
             GetAndSetFormDigest();
             string fieldXmlString = field.Properties["SchemaXml"];
@@ -803,7 +803,7 @@ namespace SpRestUtility
             restRequest.ContentLength = postData.Length;
             restRequest.ContentType = "application/json;odata=verbose";
             restRequest.Headers.Add("X-RequestDigest", _formDigest);
-            restRequest.Headers.Add("X-HTTP-Method","MERGE");
+            restRequest.Headers.Add("X-HTTP-Method", "MERGE");
 
             Stream restRequestStream = restRequest.GetRequestStream();
             restRequestStream.Write(postData, 0, postData.Length);
@@ -812,8 +812,8 @@ namespace SpRestUtility
             HttpWebResponse restResponse = (HttpWebResponse)restRequest.GetResponse();
             return restResponse;
         }
-        
-        public HttpWebResponse Delete_SpField (SpField field, SpList list)
+
+        public HttpWebResponse DeleteSpField(SpField field, SpList list)
         {
             try
             {
@@ -842,8 +842,8 @@ namespace SpRestUtility
                 XmlNamespaceManager fManager = ReturnSpXmlNameSpaceManager(fieldXmlDoc);
 
                 XmlNode fieldIdNode = fieldXmlDoc.SelectSingleNode("//atom:content/m:properties/d:Id", fManager);
-                XmlNode fieldInternalNameNode = fieldXmlDoc.SelectSingleNode("//atom:content/m:properties/d:InternalName", fManager);
                 XmlNode fieldTypeKindXmlNode = fieldXmlDoc.SelectSingleNode("//atom:content/m:properties/d:FieldTypeKind", fManager);
+                XmlNode fieldInternalNameNode = fieldXmlDoc.SelectSingleNode("//atom:content/m:properties/d:InternalName", fManager);
                 XmlNodeList propertyNodes = fieldXmlDoc.SelectNodes("//atom:content/m:properties", fManager);
 
                 SpField field = new SpField();
@@ -868,7 +868,7 @@ namespace SpRestUtility
         #endregion
 
         #region ListItem Utilities
-        public SpItem Get_SpItem_By_ID(int itemID, SpList list)
+        public SpItem GetSpItemByID(int itemID, SpList list)
         {
             try
             {
@@ -897,7 +897,7 @@ namespace SpRestUtility
             }
         }
 
-        public SpItemCollection Get_SpItem_Collection(SpList list, string filter = "")
+        public SpItemCollection GetSpItemCollection(SpList list, string filter = "")
         {
             try
             {
@@ -931,10 +931,11 @@ namespace SpRestUtility
             }
         }
 
-        public SpItem Create_SpItem(SpItem item, SpList list)
+        public SpItem CreateSpItem(SpItem item, SpList list)
         {
             try
             {
+
                 GetAndSetFormDigest();
                 string itemDataString = ReturnDataStringForRestRequest(item);
 
@@ -970,7 +971,7 @@ namespace SpRestUtility
             }
         }
 
-        public HttpWebResponse Update_SpItem(SpItem item, SpList list)
+        public HttpWebResponse UpdateSpItem(SpItem item, SpList list)
         {
             try
             {
@@ -1004,7 +1005,7 @@ namespace SpRestUtility
             }
         }
 
-        public HttpWebResponse Delete_SpItem(SpItem item, SpList list)
+        public HttpWebResponse DeleteSpItem(SpItem item, SpList list)
         {
             try
             {
@@ -1029,7 +1030,7 @@ namespace SpRestUtility
             }
         }
 
-        public SpFile Get_Attachment_From_SpItem(string fileName, SpItem item, SpList list)
+        public SpFile GetAttachmentFromSpItem(string fileName, SpItem item, SpList list)
         {
             try
             {
@@ -1057,7 +1058,7 @@ namespace SpRestUtility
             }
         }
 
-        public SpFileCollection Get_All_Attachments_From_SpItem(SpItem item, SpList list)
+        public SpFileCollection GetAllAttachmentsFromSpItem(SpItem item, SpList list)
         {
             try
             {
@@ -1096,7 +1097,7 @@ namespace SpRestUtility
             }
         }
 
-        public SpFile Upload_SpItem_Attachment(string filePath, SpItem item, SpList list)
+        public SpFile UploadSpItemAttachment(string filePath, SpItem item, SpList list)
         {
             try
             {
@@ -1132,8 +1133,8 @@ namespace SpRestUtility
                 throw ex;
             }
         }
-        
-        public HttpWebResponse Rename_SpItem_Attachment(string newFileName, SpFile file)
+
+        public HttpWebResponse RenameSpItemAttachment(string newFileName, SpFile file)
         {
             try
             {
@@ -1186,7 +1187,7 @@ namespace SpRestUtility
                         else if (fieldType == "Collection(Edm.Int32)")
                         {
                             XmlNodeList nodeList = fieldTypeNode.SelectNodes("d:element", iManager);
-                            StringBuilder str = new StringBuilder();                           
+                            StringBuilder str = new StringBuilder();
                             str.Append("{'results':[");
                             foreach (XmlNode idNode in nodeList)
                             {
@@ -1212,7 +1213,7 @@ namespace SpRestUtility
         #endregion
 
         #region User Utilities
-        public SpUser Get_SpUser_By_UserName(string userName)
+        public SpUser GetSpUserByUserName(string userName)
         {
             string url = _siteUrl + "_api/web/siteusers(@v)?@v=%27i%3A0%23.w%7Casbnet%5C" + userName + "%27";
             try
@@ -1238,7 +1239,7 @@ namespace SpRestUtility
             }
         }
 
-        public SpUser Get_SpUser_By_Id(int id)
+        public SpUser GetSpUserById(int id)
         {
             string url = _siteUrl + "_api/Web/GetUserById(" + id.ToString() + ")";
             try
@@ -1263,7 +1264,7 @@ namespace SpRestUtility
                 throw ex;
             }
         }
-        
+
         public SpUserCollection GetAllSpUsersFromSite()
         {
             string url = _siteUrl + "_api/web/siteusers";
@@ -1361,7 +1362,7 @@ namespace SpRestUtility
         private string FixedPath(string path)
         {
             path = (path.StartsWith("/")) ? path : "/" + path;
-            return (path.EndsWith("/")) ? path.Remove(path.Length -1) : path;
+            return (path.EndsWith("/")) ? path.Remove(path.Length - 1) : path;
         }
 
         private string ReturnDataStringForRestRequest(SpList list)
