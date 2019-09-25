@@ -87,7 +87,7 @@ SpFolderCollection folderCollection = myUT.GetSpFolderCollectionByPath("FOLDERNA
 SpFolderCollection folderCollection = myUT.GetSpFolderCollectionByPath("LIBRARYNAME/FOLDERNAME");
 
 // Get all Folders in Subfolder
-SpFolderCollection folderCollection = myUT.Get_SpFolderCollectionByPath("LIBRARYNAME/FOLDERNAME/SUBFOLDERNAME");
+SpFolderCollection folderCollection = myUT.GetSpFolderCollectionByPath("LIBRARYNAME/FOLDERNAME/SUBFOLDERNAME");
 
 // By SpFolder
 SpFolder folder = myUT.GetSpFolderByPath("LIBRARYNAME/FOLDERNAME");
@@ -113,7 +113,7 @@ myUT.DeleteSpFolder(folder);
 ### Get a SpFile by FileName from SpFolder
 ```c#
 SpFolder folder = myUT.GetSpFolderByPath("LIBRARYNAME/FOLDERNAME");
-SpFile file = myUT.GetSpFileByFilename_From_SpFolder("FILENAME.txt",folder);
+SpFile file = myUT.GetSpFileByFilenameFromSpFolder("FILENAME.txt",folder);
 ```
 ### Get all SpFiles by FileName from SpFolder
 ```c#
@@ -172,7 +172,7 @@ SpItemCollection collection = myUT.GetSpItemCollection(listA);
 
 // With filter example
 SpList listB = myUT.GetSpListByTitle("LISTNAMEB");
-SpItemCollection collection = myUT.Get_SpItemCollection(listB,"$filter=Fieldname eq 'Whatever'");
+SpItemCollection collection = myUT.GetSpItemCollection(listB,"$filter=Fieldname eq 'Whatever'");
 ```
 ### Access Field Values
 ```c#
@@ -187,7 +187,7 @@ int yourItemId = 100;
 SpList list = myUT.GetSpListByTitle("LISTNAME");
 SpItem item = myUT.GetSpItemByID(yourItemId,list);
 item.SetFieldValue("Title","New Title");
-myUT.Update_SpItem(item,list);
+myUT.UpdateSpItem(item,list);
 ```
 ### Setting Lookups, User and URL Fields
 ```c#
@@ -268,12 +268,12 @@ SpField field = new SpField();
 field.InternalName = "MyNewField";
 field.SpFieldTypeKind = SpField.TypeKind.Text;
 field.SetProperty("SchemaXml","<Field Type=\"Text\" DisplayName=\"My new Field\" Required=\"FALSE\" />");
-myUT.Create_SpField(field,list);
+myUT.CreateSpField(field,list);
 ```
 ### Update a SpField on a List
 ```c#
 string newXmlSchema = "SchemaXmlString"; // look above
-SpList list = myUT.Get_SpList_By_Title("LISTNAME");
+SpList list = myUT.GetSpListByTitle("LISTNAME");
 SpField field = myUT.GetSpFieldByInternalNameOrTitle("InterNameOrTitle",list);
 field.Properties["SchemaXml"] = newXmlSchema;
 myUT.UpdateSpField(field,list);
