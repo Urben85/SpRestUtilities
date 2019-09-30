@@ -7,7 +7,6 @@ using System.Collections.Generic;
 
 namespace SpRestUtility
 {
-    //test
     public class SpRestUtilities
     {
         #region Properties
