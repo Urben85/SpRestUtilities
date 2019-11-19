@@ -68,7 +68,7 @@ myUT.DeleteSpList(list);
 ### Get a SpFolder
 ```c#
 // With a Library
-SpList lilibrary = myUT.GetSpListByTitle("LIBRARYNAME");
+SpList library = myUT.GetSpListByTitle("LIBRARYNAME");
 SpFolder folder = myUT.GetSpFolderByPath("FOLDERNAME",library);
 
 // With path only
@@ -80,7 +80,7 @@ SpFolder folder = myUT.GetSpFolderByPath("LIBRARYNAME/FOLDERNAME/SUBFOLDERNAME")
 ### Get all SpFolders from SpFolder
 ```c#
 // With path and Library
-SpList lilibrary = myUT.GetSpListByTitle("LIBRARYNAME");
+SpList library = myUT.GetSpListByTitle("LIBRARYNAME");
 SpFolderCollection folderCollection = myUT.GetSpFolderCollectionByPath("FOLDERNAME",library);
 
 // With path only
