@@ -196,16 +196,16 @@ SpList list = myUT.GetSpListByTitle("LISTNAME");
 SpItem item = myUT.GetSpItemByID(yourItemId,list);
 
 // Set LookupSingle and UserSingle
-item.Data["SingleId"] = "100"; // "Id" must be applied at the end of the Fieldname!
-item.Data["SingleId"] = "-1"; // Resets the Field to empty
+item.SetFieldValue("SingleId","100"); // "Id" must be applied at the end of the Fieldname!
+item.SetFieldValue("SingleId","-1"); // Resets the Field to empty
 
 // Set LookupMulti and UserMulti
-item.Data["MultiId"] = "{'results':[100,101]}"; // "Id" must be applied at the end of the Fieldname!
-item.Data["MultiId"] = "{'results':[]}"; // Resets the Field to empty
+item.SetFieldValue("MultiId","{'results':[100,101]}"); // "Id" must be applied at the end of the Fieldname!
+item.SetFieldValue("MultiId","{'results':[]}"); // Resets the Field to empty
 
 // Set URL Field
-item.Data["UrlField"] = "{'Url':'https://github.com','Description':'GitHub'}";
-item.Data["UrlField"] = "{'Url':'','Description':''}"; // Resets the Field to empty
+item.SetFieldValue("UrlField","{'Url':'https://github.com','Description':'GitHub'}");
+item.SetFieldValue("UrlField","{'Url':'','Description':''}"); // Resets the Field to empty
 
 myUT.UpdateSpItem(item,list);
 ```
